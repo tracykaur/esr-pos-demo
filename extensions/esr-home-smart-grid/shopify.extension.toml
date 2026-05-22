@@ -1,0 +1,19 @@
+api_version = "2026-04"
+
+[[extensions]]
+type = "ui_extension"
+# Change the merchant-facing name of the extension in locales/en.default.json
+name = "t:name"
+uid = "65b579af-8e71-906d-225e-3d75e6204c0676e3d07b"
+handle = "elka-home-clienteling"
+description = "Search clients and manage in-store clienteling."
+
+# module: file that contains your extension’s source code
+# target: location where your extension appears in POS
+[[extensions.targeting]]
+module = "./src/Tile.tsx"
+target = "pos.home.tile.render"
+
+[[extensions.targeting]]
+module = "./src/Modal.tsx"
+target = "pos.home.modal.render"

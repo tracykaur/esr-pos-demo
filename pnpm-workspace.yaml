@@ -1,0 +1,12 @@
+packages:
+  - "."
+  - "extensions/*"
+
+ignoredBuiltDependencies:
+  - '@parcel/watcher'
+  - '@prisma/client'
+  - '@prisma/engines'
+
+onlyBuiltDependencies:
+  - esbuild
+  - prisma

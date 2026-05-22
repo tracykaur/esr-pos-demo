@@ -1,0 +1,55 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = "6581aed86bdde374d8c04d295fa7f8a3"
+extension_directories = [
+  "extensions/esr-home-smart-grid",
+  "extensions/esr-customer-details-action",
+  "extensions/esr-customer-details-block",
+  "extensions/esr-product-details-action",
+  "extensions/esr-product-details-block",
+  "extensions/esr-ai-assistant",
+  "extensions/esr-ai-customer-coach-block",
+  "extensions/appointment-booking-v2",
+  "extensions/vip",
+  "extensions/manager-discount",
+]
+name = "esr-pos-demo"
+application_url = "https://street-algorithm-federation-vessels.trycloudflare.com"
+embedded = true
+handle = "esr-clienteling"
+
+[build]
+automatically_update_urls_on_dev = false
+
+[webhooks]
+api_version = "2026-07"
+
+  [[webhooks.subscriptions]]
+  uri = "/webhooks/orders/paid"
+  topics = [ "orders/paid" ]
+
+  [[webhooks.subscriptions]]
+  uri = "/webhooks/orders/create"
+  topics = [ "orders/create" ]
+
+  [[webhooks.subscriptions]]
+  uri = "/webhooks/customers/update"
+  topics = [ "customers/update" ]
+
+  [[webhooks.subscriptions]]
+  uri = "/webhooks/app/uninstalled"
+  topics = [ "app/uninstalled" ]
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "read_customers,read_discounts,read_locations,read_metaobject_definitions,read_metaobjects,read_orders,read_products,read_users,write_customers,write_discounts,write_metaobject_definitions,write_metaobjects"
+
+[auth]
+redirect_urls = [
+  "https://street-algorithm-federation-vessels.trycloudflare.com/auth/callback",
+  "https://street-algorithm-federation-vessels.trycloudflare.com/auth/shopify/callback",
+  "https://street-algorithm-federation-vessels.trycloudflare.com/api/auth/callback",
+]
+
+[pos]
+embedded = true

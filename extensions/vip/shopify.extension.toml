@@ -1,0 +1,23 @@
+api_version = "2026-04"
+
+[[extensions]]
+name = "t:name"
+handle = "vip"
+type = "function"
+uid = "1c9c4856-cb4f-de9a-7c7d-cb79274cb3e77fe549d0"
+description = "t:description"
+
+  [[extensions.targeting]]
+  target = "cart.lines.discounts.generate.run"
+  input_query = "src/cart_lines_discounts_generate_run.graphql"
+  export = "cart_lines_discounts_generate_run"
+
+  [[extensions.targeting]]
+  target = "cart.delivery-options.discounts.generate.run"
+  input_query = "src/cart_delivery_options_discounts_generate_run.graphql"
+  export = "cart_delivery_options_discounts_generate_run"
+
+  [extensions.build]
+  command = "cargo build --target=wasm32-wasip1 --release"
+  path = "target/wasm32-wasip1/release/vip.wasm"
+  watch = [ "src/**/*.rs" ]

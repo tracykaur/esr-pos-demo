@@ -1,0 +1,16 @@
+api_version = "2026-04"
+uid = "5eb266ff-ae58-0f35-9eeb-42b7a25c0ffa827f9220"
+
+[[extensions]]
+type = "ui_extension"
+name = "t:name"
+handle = "esr-ai-assistant"
+description = "ESR AI stylist and sales assistant for POS."
+
+[[extensions.targeting]]
+module = "./src/Tile.tsx"
+target = "pos.home.tile.render"
+
+[[extensions.targeting]]
+module = "./src/Modal.tsx"
+target = "pos.home.modal.render"

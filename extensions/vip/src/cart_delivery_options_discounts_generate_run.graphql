@@ -1,0 +1,18 @@
+query Input {
+  cart {
+    deliveryGroups {
+      id
+    }
+    buyerIdentity {
+      customer {
+        isConcierge: hasAnyTag(tags: ["concierge", "Concierge"])
+      }
+    }
+  }
+  discount {
+    discountClasses
+    metafield(namespace: "$app:config", key: "config") {
+      jsonValue
+    }
+  }
+}

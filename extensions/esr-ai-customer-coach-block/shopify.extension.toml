@@ -1,0 +1,12 @@
+api_version = "2026-04"
+uid = "5725bf58-2067-0775-4fd9-955b99657bb0539d7ced"
+
+[[extensions]]
+type = "ui_extension"
+name = "t:name"
+handle = "elka-ai-customer-coach"
+description = "Show AI-powered customer coaching tips."
+
+[[extensions.targeting]]
+module = "./src/Block.tsx"
+target = "pos.customer-details.block.render"

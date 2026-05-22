@@ -1,0 +1,23 @@
+query Input {
+  cart {
+    lines {
+      id
+      quantity
+      giftAttribute: attribute(key: "_elka_gift") {
+        value
+      }
+    }
+    buyerIdentity {
+      customer {
+        isVip: hasAnyTag(tags: ["vip", "VIP"])
+        isConcierge: hasAnyTag(tags: ["concierge", "Concierge"])
+      }
+    }
+  }
+  discount {
+    discountClasses
+    metafield(namespace: "$app:config", key: "config") {
+      jsonValue
+    }
+  }
+}

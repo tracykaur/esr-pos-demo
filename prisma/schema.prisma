@@ -1,0 +1,72 @@
+// Prisma schema for the Elka Clienteling backend.
+//
+// Two responsibilities:
+//   1. Session storage required by @shopify/shopify-app-remix.
+//   2. Tiny lookup cache: staff members and locations, populated by the seed
+//      script (architect §5.3a) so that /api/customer/:id/clienteling can
+//      resolve human-readable names without an N+1 to the Admin API every
+//      request.
+//
+// Everything else (notes, sizing, last_staff, segments, etc.) lives in Shopify
+// (metafields, metaobjects, segments) per architect §2.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Session {
+  id            String    @id
+  shop          String
+  state         String
+  isOnline      Boolean   @default(false)
+  scope         String?
+  expires       DateTime?
+  accessToken   String
+  userId        BigInt?
+  firstName     String?
+  lastName      String?
+  email         String?
+  accountOwner  Boolean   @default(false)
+  locale        String?
+  collaborator  Boolean?  @default(false)
+  emailVerified Boolean?  @default(false)
+}
+
+model StaffMember {
+  id        String   @id // numeric staff member id (matches tag staff-pick-<id>)
+  shop      String
+  name      String
+  email     String?
+  updatedAt DateTime @updatedAt
+
+  @@index([shop])
+}
+
+model Location {
+  id        String   @id // gid://shopify/Location/...
+  shop      String
+  handle    String   // matches home-store-<handle> tag
+  name      String
+  updatedAt DateTime @updatedAt
+
+  @@index([shop])
+  @@index([shop, handle])
+}
+
+// Cached segment-id lookup so /api/products/:id/concierge-reachout can resolve
+// "interest-knitwear" -> "New Drop — Knitwear" -> segment GID without a live
+// segments(first:100) scan on every request.
+model SegmentCache {
+  id        String   @id // gid://shopify/Segment/...
+  shop      String
+  name      String   // segment display name
+  updatedAt DateTime @updatedAt
+
+  @@index([shop])
+  @@index([shop, name])
+}

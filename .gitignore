@@ -1,0 +1,26 @@
+node_modules
+/.cache
+/build
+.env
+.env.local
+*.local
+.DS_Store
+.vscode
+.idea
+
+# Generated bundles / build artifacts
+extensions/*/dist/
+extensions/*/target/
+
+# Retired local experiments / backups
+_bak/
+extensions/clienteling/
+extensions/vip-discount/
+extensions/elka-appointments/
+
+# Prisma
+prisma/dev.db
+prisma/dev.db-journal
+
+# Shopify
+.shopify
