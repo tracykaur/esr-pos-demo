@@ -1,6 +1,6 @@
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
-client_id = "6581aed86bdde374d8c04d295fa7f8a3"
+client_id = "72751e0ca3ab15f0d5704acf6db48fcc"
 extension_directories = [
   "extensions/esr-home-smart-grid",
   "extensions/esr-customer-details-action",
@@ -13,7 +13,7 @@ extension_directories = [
   "extensions/vip",
   "extensions/manager-discount",
 ]
-name = "esr-pos-demo"
+name = "TK-esr-pos-demo"
 application_url = "https://street-algorithm-federation-vessels.trycloudflare.com"
 embedded = true
 handle = "esr-clienteling"
