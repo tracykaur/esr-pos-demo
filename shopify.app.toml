@@ -10,9 +10,10 @@ extension_directories = [
   "extensions/esr-ai-assistant",
   "extensions/esr-ai-customer-coach-block",
   "extensions/appointment-booking-v2",
-  "extensions/manager-discount",
+  "extensions/manager-discount"
 ]
 name = "TK-esr-pos-demo"
+application_url = "https://example.com"
 embedded = true
 handle = "esr-clienteling"
 
@@ -20,7 +21,7 @@ handle = "esr-clienteling"
 automatically_update_urls_on_dev = true
 
 [webhooks]
-api_version = "2026-07"
+api_version = "2026-04"
 
   [[webhooks.subscriptions]]
   uri = "/webhooks/app/uninstalled"
@@ -31,7 +32,9 @@ scopes = "read_customers,read_discounts,read_locations,read_metaobject_definitio
 
 [auth]
 redirect_urls = [
-  "https://localhost/auth/callback",
+  "https://prohibited-jersey-bomb-nil.trycloudflare.com/auth/callback",
+  "https://prohibited-jersey-bomb-nil.trycloudflare.com/auth/shopify/callback",
+  "https://prohibited-jersey-bomb-nil.trycloudflare.com/api/auth/callback",
 ]
 
 [pos]

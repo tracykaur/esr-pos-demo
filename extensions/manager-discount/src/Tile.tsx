@@ -8,28 +8,19 @@ export default async () => {
 
 function Extension() {
   const [hasCart, setHasCart] = useState(false);
-  const [isConnected, setIsConnected] = useState(true);
 
   useEffect(() => {
-    const unsubCart = shopify.cart.current.subscribe((cart) => {
+    const unsub = shopify.cart.current.subscribe((cart) => {
       setHasCart((cart?.lineItems?.length ?? 0) > 0);
     });
-
-    const unsubConn = shopify.connectivity.current.subscribe((conn) => {
-      setIsConnected(conn.internetConnected === "Connected");
-    });
-
-    return () => {
-      unsubCart();
-      unsubConn();
-    };
+    return () => unsub();
   }, []);
 
   return (
     <s-tile
       heading="Manager Discount"
       subheading={hasCart ? "Authorize discount" : "Add items first"}
-      disabled={!hasCart || !isConnected}
+      disabled={!hasCart}
       onClick={() => shopify.action.presentModal()}
     />
   );

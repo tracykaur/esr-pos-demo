@@ -8,9 +8,9 @@ handle = "manager-discount"
 description = "Manager-authorized discounts with PIN verification and audit trail. Preset amounts sized for furniture/homewares high-AOV orders."
 
 [[extensions.targeting]]
-module = "./src/Tile.jsx"
+module = "./src/Tile.tsx"
 target = "pos.home.tile.render"
 
 [[extensions.targeting]]
-module = "./src/Modal.jsx"
+module = "./src/Modal.tsx"
 target = "pos.home.modal.render"
