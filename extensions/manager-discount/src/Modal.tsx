@@ -14,7 +14,7 @@ import { useState, useEffect, useCallback } from "preact/hooks";
 
 // Demo manager PINs — replace with real values for production
 const MANAGER_PINS = {
-  "1234": "Store Manager",
+  "9000": "Store Manager",
   "5678": "Assistant Manager",
   "9999": "Area Manager",
 };
